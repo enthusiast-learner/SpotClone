@@ -2,11 +2,15 @@ import React, { useContext } from 'react'
 import {assets } from '../assets/assets'
 import { PlayerContext } from './PlayerContext';
 const Player = () => {
+  
+
+  // A Consumer or useContext() – to read the data in nested components.
 
 const {track,seekBar, seekBg, playStatus, play, pause,time,previous,next,seekSong} = useContext(PlayerContext);
 
 
   return (
+    // height of 10%
     <div className='h-[10%] bg-black flex items-center text-white justify-between px-4'>
       <div className='hidden lg:flex items-center gap-4 '>
         <img  className='w-12 ' src={track.image} alt=''></img>

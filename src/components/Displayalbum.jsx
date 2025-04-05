@@ -5,17 +5,25 @@ import { albumsData, assets, songsData } from "../assets/assets";
 import { PlayerContext } from "./PlayerContext";
 
 const Displayalbum = () => {
+
+  // useParams() :-> reat rounter hook that grabs parameter from url
+  //  const { id } = useParams(); : this line gets the albumid from url 
   const { id } = useParams();
   // console.log(id);
+  // albumsData[] is an array having album info
+  // We're using id as the index to grab the right album info (name, desc, image, etc.)..
+  // store album info into albumData
   const albumData = albumsData[id];
-  console.log(albumData);
+  // console.log(albumData);
 
+  // accessing global {PlaywithId} function to start song when clicked
   const { PlaywithId } = useContext(PlayerContext);
 
   return (
     <>
       <Navbar />
       <div className="mt-10 flex gap-8 flex-col md:flex-row md-items-end">
+        {/* getting info from albumData and show on ui */}
         <img className="w-48 rounded" src={albumData.image} alt=""></img>
         <div className="flex flex-col">
           <p>PlayList</p>
@@ -43,9 +51,15 @@ const Displayalbum = () => {
         <img className="m-auto w-4" src={assets.clock_icon} alt="" />
       </div>
       <hr></hr>
+      {/* songsData is an array of object from assets 
+      having all song info */}
+      {/* item : song items in songData array
+      index: unique key - current song playing -song id-0,1,2... (id) */}
+      {/* mapping on songsData array and showing it on ui */}
       {songsData.map((item, index) => (
+        // playing when click on song 
         <div
-          onClick={() => PlaywithId(item.id)}
+          onClick={() => PlaywithId(item.id)} 
           key={index}
           className="grid grid-cols-3 sm:grid-cols-4 gap- p-2 items-center text-[#a7a7a7] hover:bg-[#ffffff2b] cursor-poiter"
         >
